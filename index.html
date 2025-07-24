@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafePath – Emergency Location Sharing</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>SafePath</h1>
+    <div class="options">
+      <button id="ai-assistant-btn">Talk to AI Assistant</button>
+      <button id="emergency-btn">Emergency: Send Location</button>
+    </div>
+    <div id="emergency-section" class="hidden">
+      <h2>Emergency Contact Management</h2>
+      <form id="contact-form">
+        <input type="email" id="contact-email" placeholder="Add emergency contact email" required />
+        <button type="submit">Add Contact</button>
+      </form>
+      <ul id="contact-list"></ul>
+      <button id="send-location-btn">Send My Location to All Contacts</button>
+      <div id="map"></div>
+    </div>
+  </div>
+  <!-- AI Assistant Modal -->
+  <div id="ai-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" id="close-ai-modal">&times;</span>
+      <h2>AI Assistant</h2>
+      <div id="ai-chat">
+        <div id="ai-messages"></div>
+        <input type="text" id="ai-input" placeholder="Ask about your location..." />
+        <button id="ai-send">Send</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhMsCZTDAIMllWRzYRss00-z1h1UDnWwI&callback=initMap"></script>
+</body>
+</html>
