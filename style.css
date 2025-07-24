@@ -1,73 +1,119 @@
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: #f4f6fb;
+  background: #f7f5ef;
   margin: 0;
   padding: 0;
+  color: #3e2c1c;
 }
-.container {
-  max-width: 500px;
-  margin: 40px auto;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  padding: 32px 24px 24px 24px;
+.header {
+  background: #7c5c36;
+  color: #fff;
+  padding: 32px 0 18px 0;
+  box-shadow: 0 2px 8px rgba(60, 40, 20, 0.08);
 }
-h1 {
+.header-content {
+  max-width: 800px;
+  margin: 0 auto;
   text-align: center;
-  color: #2a3a5e;
-  margin-bottom: 24px;
 }
-.options {
-  display: flex;
-  justify-content: space-between;
+.site-title {
+  font-size: 2.5rem;
+  margin: 0 0 8px 0;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+.site-tagline {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #e7d7c1;
+}
+.main-content {
+  max-width: 900px;
+  margin: 32px auto 0 auto;
+  padding: 0 16px 32px 16px;
+}
+.about-section {
+  background: #e7d7c1;
+  border-radius: 10px;
+  padding: 24px 20px 18px 20px;
   margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(60, 40, 20, 0.04);
+}
+.about-section h2 {
+  margin-top: 0;
+  color: #7c5c36;
+}
+.features-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+}
+.feature-card {
+  background: #fff9f2;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(60, 40, 20, 0.06);
+  flex: 1 1 350px;
+  min-width: 320px;
+  max-width: 420px;
+  padding: 24px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.feature-card h3 {
+  margin-top: 0;
+  color: #5a3d1b;
+}
+.feature-card p {
+  margin-bottom: 18px;
+  color: #4d3a23;
 }
 button {
-  background: #2a3a5e;
+  background: #a67c52;
   color: #fff;
   border: none;
   border-radius: 6px;
-  padding: 12px 20px;
+  padding: 10px 18px;
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s;
+  margin-bottom: 10px;
 }
 button:hover {
-  background: #1d2842;
-}
-#emergency-section {
-  margin-top: 24px;
-}
-#emergency-section.hidden {
-  display: none;
+  background: #7c5c36;
 }
 #contact-form {
   display: flex;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+  width: 100%;
 }
 #contact-email {
   flex: 1;
   padding: 8px;
-  border: 1px solid #cfd8dc;
+  border: 1px solid #cdb892;
   border-radius: 4px;
+  background: #f7f5ef;
 }
 #contact-list {
   list-style: none;
   padding: 0;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+  width: 100%;
 }
 #contact-list li {
-  background: #f0f4fa;
+  background: #e7d7c1;
   margin-bottom: 6px;
   padding: 6px 12px;
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #5a3d1b;
 }
 #contact-list button {
-  background: #e53935;
+  background: #b94a48;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -75,17 +121,21 @@ button:hover {
   font-size: 0.9rem;
   cursor: pointer;
 }
-#map {
+#contact-list button:hover {
+  background: #7c2f1b;
+}
+.map-card, #map {
   width: 100%;
-  height: 250px;
-  margin-top: 16px;
+  height: 180px;
+  margin-top: 10px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px rgba(60, 40, 20, 0.06);
+  background: #e7d7c1;
 }
 .modal {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(44, 62, 80, 0.25);
+  background: rgba(60, 40, 20, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,12 +145,12 @@ button:hover {
   display: none;
 }
 .modal-content {
-  background: #fff;
+  background: #fff9f2;
   padding: 32px 24px 24px 24px;
   border-radius: 10px;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 24px rgba(60, 40, 20, 0.12);
   position: relative;
 }
 .close {
@@ -108,7 +158,7 @@ button:hover {
   top: 12px;
   right: 18px;
   font-size: 1.5rem;
-  color: #888;
+  color: #a67c52;
   cursor: pointer;
 }
 #ai-chat {
@@ -120,18 +170,33 @@ button:hover {
   min-height: 80px;
   max-height: 180px;
   overflow-y: auto;
-  background: #f4f6fb;
+  background: #e7d7c1;
   border-radius: 6px;
   padding: 10px;
   margin-bottom: 8px;
+  color: #5a3d1b;
 }
 #ai-input {
   padding: 8px;
-  border: 1px solid #cfd8dc;
+  border: 1px solid #cdb892;
   border-radius: 4px;
   flex: 1;
+  background: #f7f5ef;
 }
 #ai-send {
   margin-top: 6px;
   align-self: flex-end;
+}
+.footer {
+  background: #7c5c36;
+  color: #fff;
+  padding: 18px 0 12px 0;
+  text-align: center;
+  margin-top: 32px;
+}
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1rem;
+  color: #e7d7c1;
 }

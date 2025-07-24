@@ -7,23 +7,45 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>SafePath</h1>
-    <div class="options">
-      <button id="ai-assistant-btn">Talk to AI Assistant</button>
-      <button id="emergency-btn">Emergency: Send Location</button>
+  <header class="header">
+    <div class="header-content">
+      <h1 class="site-title">SafePath</h1>
+      <p class="site-tagline">Your trusted companion for emergency location sharing and safety assistance</p>
     </div>
-    <div id="emergency-section" class="hidden">
-      <h2>Emergency Contact Management</h2>
-      <form id="contact-form">
-        <input type="email" id="contact-email" placeholder="Add emergency contact email" required />
-        <button type="submit">Add Contact</button>
-      </form>
-      <ul id="contact-list"></ul>
-      <button id="send-location-btn">Send My Location to All Contacts</button>
-      <div id="map"></div>
-    </div>
-  </div>
+  </header>
+  <main class="main-content">
+    <section class="about-section">
+      <h2>About SafePath</h2>
+      <p>SafePath empowers you to quickly share your real-time location with trusted contacts, send emergency alerts, and get instant help from an AI assistant. Stay safe and connected, wherever you are.</p>
+    </section>
+    <section class="features-section">
+      <div class="feature-card">
+        <h3>Share Current Location</h3>
+        <p>Share your current location on the map with a single click. Useful for letting friends or family know where you are.</p>
+        <button id="share-location-btn">Share My Location</button>
+        <div id="map" class="map-card"></div>
+      </div>
+      <div class="feature-card">
+        <h3>AI Assistant</h3>
+        <p>Ask the AI assistant about your current location, address, or get safety tips. The assistant is always ready to help you understand your surroundings.</p>
+        <button id="ai-assistant-btn">Talk to AI Assistant</button>
+      </div>
+      <div class="feature-card">
+        <h3>Emergency Alert</h3>
+        <p>Send an emergency alert with your live location and address to all your saved emergency contacts instantly.</p>
+        <button id="emergency-btn">Send Emergency Alert</button>
+      </div>
+      <div class="feature-card">
+        <h3>Add Emergency Contacts</h3>
+        <p>Manage your list of emergency contacts. Add or remove emails, and alerts will be sent to them in case of emergency.</p>
+        <form id="contact-form">
+          <input type="email" id="contact-email" placeholder="Add emergency contact email" required />
+          <button type="submit">Add Contact</button>
+        </form>
+        <ul id="contact-list"></ul>
+      </div>
+    </section>
+  </main>
   <!-- AI Assistant Modal -->
   <div id="ai-modal" class="modal hidden">
     <div class="modal-content">
@@ -36,6 +58,11 @@
       </div>
     </div>
   </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2024 SafePath. All rights reserved.</p>
+    </div>
+  </footer>
   <script src="script.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhMsCZTDAIMllWRzYRss00-z1h1UDnWwI&callback=initMap"></script>
 </body>

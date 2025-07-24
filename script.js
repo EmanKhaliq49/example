@@ -2,10 +2,10 @@ let map;
 let userLocation = null;
 
 // UI Elements
+const shareLocationBtn = document.getElementById('share-location-btn');
 const aiAssistantBtn = document.getElementById('ai-assistant-btn');
 const emergencyBtn = document.getElementById('emergency-btn');
-const emergencySection = document.getElementById('emergency-section');
-const sendLocationBtn = document.getElementById('send-location-btn');
+const sendLocationBtn = document.getElementById('send-location-btn'); // Not used in new UI
 const contactForm = document.getElementById('contact-form');
 const contactEmailInput = document.getElementById('contact-email');
 const contactList = document.getElementById('contact-list');
@@ -14,14 +14,11 @@ const closeAiModal = document.getElementById('close-ai-modal');
 const aiInput = document.getElementById('ai-input');
 const aiSend = document.getElementById('ai-send');
 const aiMessages = document.getElementById('ai-messages');
+const mapDiv = document.getElementById('map');
 
 // --- UI Navigation ---
 aiAssistantBtn.onclick = () => {
   aiModal.classList.remove('hidden');
-};
-emergencyBtn.onclick = () => {
-  emergencySection.classList.remove('hidden');
-  emergencyBtn.disabled = true;
 };
 closeAiModal.onclick = () => {
   aiModal.classList.add('hidden');
@@ -70,13 +67,13 @@ renderContacts();
 
 // --- Google Maps Integration ---
 window.initMap = function() {
-  map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(mapDiv, {
     center: { lat: 20, lng: 0 },
     zoom: 2,
   });
 };
 
-function getLocationAndSendAlert() {
+function showCurrentLocationOnMap() {
   if (!navigator.geolocation) {
     alert('Geolocation not supported!');
     return;
@@ -93,6 +90,24 @@ function getLocationAndSendAlert() {
         map: map,
         title: 'You are here',
       });
+    },
+    (error) => {
+      alert('Failed to get your location.');
+    }
+  );
+}
+shareLocationBtn.onclick = showCurrentLocationOnMap;
+
+function sendEmergencyAlert() {
+  if (!navigator.geolocation) {
+    alert('Geolocation not supported!');
+    return;
+  }
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      userLocation = { lat, lng };
       // Get address
       const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyDhMsCZTDAIMllWRzYRss00-z1h1UDnWwI`;
       fetch(geocodeUrl)
@@ -113,6 +128,7 @@ function getLocationAndSendAlert() {
     }
   );
 }
+emergencyBtn.onclick = sendEmergencyAlert;
 
 function sendToAllContacts(lat, lng, address) {
   const contacts = getContacts();
@@ -146,12 +162,11 @@ function sendToAllContacts(lat, lng, address) {
       alert('Error sending alert.');
     });
 }
-sendLocationBtn.onclick = getLocationAndSendAlert;
 
 // --- AI Assistant (Simple, Local) ---
 function aiReply(input) {
   if (!userLocation) {
-    return "I don't have your current location yet. Please use the emergency feature to get your location.";
+    return "I don't have your current location yet. Please use the Share Location or Emergency Alert feature first.";
   }
   const { lat, lng } = userLocation;
   input = input.toLowerCase();
